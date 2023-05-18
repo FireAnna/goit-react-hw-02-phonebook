@@ -44,9 +44,9 @@ export default class App extends Component {
   render() {
     const { filter, contacts } = this.state;
 
-    const lowercasedName = filter.toLowerCase();
-    const filteredContacts = this.state.filter !== '' ? contacts.filter(contacts =>
-      contacts.name.toLowerCase().includes(lowercasedName)) : [];
+    // const lowercasedName = filter.toLowerCase();
+    // const filteredContacts = this.state.filter !== '' ? contacts.filter(contacts =>
+    //   contacts.name.toLowerCase().includes(lowercasedName)) : [];
 
     return (
       <div className={css.container}>
@@ -56,7 +56,7 @@ export default class App extends Component {
         <Filter filter={filter} filterChange={this.filterChange} />
 
         <ContactList
-          contacts={filteredContacts}
+          contacts={contacts}
           deleteContact={this.deleteContact}
           filteredName={filter}
         />
