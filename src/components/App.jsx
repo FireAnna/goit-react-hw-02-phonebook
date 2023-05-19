@@ -13,7 +13,7 @@ export default class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: '',
+    filter:'',
   };
 
   deleteContact = contactId => {
@@ -43,11 +43,7 @@ export default class App extends Component {
 
   render() {
     const { filter, contacts } = this.state;
-
-    // const lowercasedName = filter.toLowerCase();
-    // const filteredContacts = this.state.filter !== '' ? contacts.filter(contacts =>
-    //   contacts.name.toLowerCase().includes(lowercasedName)) : [];
-
+    
     return (
       <div className={css.container}>
         <h1 className={css.title}>Phonebook</h1>

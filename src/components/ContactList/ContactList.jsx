@@ -5,31 +5,58 @@ import css from './ContactList.module.css'
 
 
 class ContactList extends Component {
+  
 
-    
-    
+  
   render() {
+
+    if (this.props.filteredName === '') {
       return (
-      <ul className={css.ul}>
-        {this.props.contacts.map(({ id, name, number }) => {
-          return (
-            <li className={css.li} key={id}>
-              <p>
-                {name}: {number}
-              </p>
-              <button
-                className={css.btn}
-                onClick={() => {
-                  this.props.deleteContact(id);
-                }}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    );
+        <ul className={css.ul}>
+          {this.props.contacts.map(({ id, name, number }) => {
+            return (
+              <li className={css.li} key={id}>
+                <p>
+                  {name}: {number}
+                </p>
+                <button
+                  className={css.btn}
+                  onClick={() => {
+                    this.props.deleteContact(id);
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    } else {
+      
+      return (
+        <ul className={css.ul}>
+          {this.props.contacts.filter(contacts => contacts.name.toLowerCase().includes(this.props.filteredName.toLowerCase())).map(({ id, name, number }) => {
+            return (
+              <li className={css.li} key={id}>
+                <p>
+                  {name}: {number}
+                </p>
+                <button
+                  className={css.btn}
+                  onClick={() => {
+                    this.props.deleteContact(id);
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )
+      
+    }
   }
 }
 
